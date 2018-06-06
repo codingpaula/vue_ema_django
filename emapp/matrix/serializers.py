@@ -20,3 +20,9 @@ class TopicSerializer(serializers.ModelSerializer):
         for task_data in task_set_data:
             Task.objects.create(topic=topic, **task_data)
         return topic
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.color = validated_data.get('color', instance.color)
+        instance.save()
+        return instance

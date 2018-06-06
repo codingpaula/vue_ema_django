@@ -35,5 +35,6 @@ class TopicList(generics.ListCreateAPIView):
 class TopicDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Topic.objects.all()
     serializer_class = TopicSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
-                          IsOwnerOrReadOnly,)
+    permission_classes = [
+        permissions.AllowAny
+    ]
